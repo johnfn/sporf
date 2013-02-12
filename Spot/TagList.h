@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface TagList : NSObject
-
 - (NSArray*)uniqueTags;
-
+- (int)numPhotosWithTag:(NSString*)tag;
 @end

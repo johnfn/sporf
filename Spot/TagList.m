@@ -12,14 +12,30 @@
 @interface TagList ()
 @property (readonly, nonatomic) NSArray *tags;
 @property (readonly, nonatomic) NSArray *pictures;
-
 @property (readonly, nonatomic) NSArray *uniqueTags;
+@property (nonatomic) NSMutableDictionary *tagToPhotoCount;
 @end
 
 @implementation TagList
 
 @synthesize pictures = _pictures;
 @synthesize uniqueTags = _uniqueTags;
+
+- (void)addTagCount:(NSString*)tag {
+    tag = [tag uppercaseString];
+    
+    if (!self.tagToPhotoCount) {
+        self.tagToPhotoCount = [[NSMutableDictionary alloc] init];
+    }
+    
+    int count = 0;
+    if ([self.tagToPhotoCount objectForKey:tag] != nil) {
+        count = [[self.tagToPhotoCount objectForKey:tag] intValue];
+    }
+    count += 1;
+    
+    [self.tagToPhotoCount setObject:[NSNumber numberWithInt:count] forKey:tag];
+}
 
 - (NSArray*)uniqueTags {
     if (!_uniqueTags) {
@@ -35,6 +51,7 @@
                     [s isEqualToString:@"cs193pspot"]) continue;
                 
                 [result addObject:[s capitalizedString]];
+                [self addTagCount:s];
             }
         }
         
@@ -42,6 +59,16 @@
     }
     
     return _uniqueTags;
+}
+
+- (int)numPhotosWithTag:(NSString *)tag {
+    tag = [tag uppercaseString];
+    
+    if ([self.tagToPhotoCount objectForKey:tag] != nil) {
+        return [[self.tagToPhotoCount objectForKey:tag] intValue];
+    } else {
+        return 0;
+    }
 }
 
 - (NSArray*)pictures {

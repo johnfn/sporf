@@ -66,8 +66,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.textLabel.text = self.tag;
-    
-    // Configure the cell...
+    cell.detailTextLabel.text = @"Hello world!";
     
     return cell;
 }
