@@ -78,7 +78,7 @@
     int index = [indexPath row];
     
     cell.textLabel.text = [self.tagDetail nameOfPhotoWithIndex:index];
-    cell.detailTextLabel.text = @"Hello world!";
+    cell.detailTextLabel.text = [self.tagDetail descriptionOfPhotoWithIndex:index];
     
     return cell;
 }

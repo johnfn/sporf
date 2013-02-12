@@ -41,6 +41,14 @@
     return [self.photoNames objectAtIndex:index];
 }
 
+- (NSString*)descriptionOfPhotoWithIndex:(int)index {
+    NSDictionary *photoInfo = [self.photos objectAtIndex:index];
+    NSDictionary *descInfo  = [photoInfo objectForKey:@"description"];
+    NSString *description = [descInfo objectForKey:@"_content"];
+    
+    return description;
+}
+
 - (NSArray*)photoNames {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     for (NSDictionary *d in self.photos) {

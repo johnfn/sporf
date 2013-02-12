@@ -12,4 +12,5 @@
 - (id)initWithTagName:(NSString*)tag; //designated initializer
 - (NSArray*)photoNames;
 - (NSString*)nameOfPhotoWithIndex:(int)index;
+- (NSString*)descriptionOfPhotoWithIndex:(int)index;
 @end
