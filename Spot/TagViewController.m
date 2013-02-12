@@ -40,6 +40,18 @@
     return _tagDetail;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    int index = [self.tableView indexPathForSelectedRow].row;
+    NSURL *url = [self.tagDetail urlOfPhotoWithIndex:index];
+    
+    NSLog(@"%@", url);
+    
+    //TagViewController *newController = (TagViewController*)segue.destinationViewController;
+    
+    //newController.tag = [self.tagList.uniqueTags objectAtIndex:index];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

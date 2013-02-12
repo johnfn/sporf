@@ -13,4 +13,5 @@
 - (NSArray*)photoNames;
 - (NSString*)nameOfPhotoWithIndex:(int)index;
 - (NSString*)descriptionOfPhotoWithIndex:(int)index;
+- (NSURL*)urlOfPhotoWithIndex:(int)index;
 @end

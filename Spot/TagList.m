@@ -65,14 +65,9 @@
     tag = [tag lowercaseString];
     NSMutableArray *result = [[NSMutableArray alloc] init];
     
-    NSLog(@"...");
-    
     for (NSDictionary *d in self.pictures) {
         NSString* tagsForOneItem = [d objectForKey:@"tags"];
         NSArray* split = [tagsForOneItem componentsSeparatedByString:@" "];
-        
-        NSLog(@"%@", split);
-        NSLog(@"%@", tag);
         
         if ([split containsObject:tag]) {
             [result addObject:d];

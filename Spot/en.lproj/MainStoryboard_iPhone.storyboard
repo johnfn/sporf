@@ -48,7 +48,7 @@
             </objects>
             <point key="canvasLocation" x="771" y="-845"/>
         </scene>
-        <!--Tag View Controller - Herp Derper-->
+        <!--Tag View Controller - [will be filled out]-->
         <scene sceneID="z8x-Et-94f">
             <objects>
                 <tableViewController id="QH4-4x-MWn" customClass="TagViewController" sceneMemberID="viewController">
@@ -57,11 +57,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TagCell" textLabel="IME-Uz-0UW" detailTextLabel="Vyj-yx-bzS" style="IBUITableViewCellStyleSubtitle" id="XSf-iX-Khe">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TagCell" textLabel="IME-Uz-0UW" detailTextLabel="Vyj-yx-bzS" style="IBUITableViewCellStyleSubtitle" id="XSf-iX-Khe">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IME-Uz-0UW">
@@ -77,6 +77,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="VJ0-YV-grZ" kind="push" id="h3i-fW-v0k"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -84,7 +87,7 @@
                             <outlet property="delegate" destination="QH4-4x-MWn" id="KAI-Tr-aDH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Herp Derper" id="nc2-j0-IwZ"/>
+                    <navigationItem key="navigationItem" title="[will be filled out]" id="nc2-j0-IwZ"/>
                     <connections>
                         <outlet property="navigationBar" destination="nc2-j0-IwZ" id="MH7-1c-xDV"/>
                     </connections>
@@ -92,6 +95,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKb-OS-MbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1245" y="-841"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ha5-ag-aKQ">
+            <objects>
+                <viewController id="VJ0-YV-grZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2vz-cd-ztL">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umz-TR-DHZ"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="umz-TR-DHZ" firstAttribute="top" secondItem="2vz-cd-ztL" secondAttribute="top" type="default" id="Pne-BM-mvt"/>
+                            <constraint firstItem="umz-TR-DHZ" firstAttribute="leading" secondItem="2vz-cd-ztL" secondAttribute="leading" type="default" id="X2w-vo-ISO"/>
+                            <constraint firstItem="umz-TR-DHZ" firstAttribute="trailing" secondItem="2vz-cd-ztL" secondAttribute="trailing" type="default" id="guE-C5-JIc"/>
+                            <constraint firstItem="umz-TR-DHZ" firstAttribute="bottom" secondItem="2vz-cd-ztL" secondAttribute="bottom" type="default" id="zu0-dW-eOr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="PpS-Fa-p7r"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gj0-Xm-4b6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1678" y="-844"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="ba7-d4-LNq">
@@ -129,6 +156,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
         <class className="SpotViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotViewController.h"/>
             <relationships>

@@ -49,6 +49,12 @@
     return description;
 }
 
+- (NSURL*)urlOfPhotoWithIndex:(int)index {
+    NSDictionary *photoInfo = [self.photos objectAtIndex:index];
+    
+    return [FlickrFetcher urlForPhoto:photoInfo format:FlickrPhotoFormatLarge];
+}
+
 - (NSArray*)photoNames {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     for (NSDictionary *d in self.photos) {
