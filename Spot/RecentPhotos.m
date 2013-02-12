@@ -24,6 +24,8 @@
     }
     [mutablePhotos addObject:photo];
     
+    NSLog(@"AAAdd pfoto");
+    
     [defaults setObject:mutablePhotos forKey:DEFAULTS_PHOTO_KEY];
 }
 
