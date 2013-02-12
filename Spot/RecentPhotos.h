@@ -12,5 +12,6 @@
 
 + (void)addPhoto:(NSDictionary*)photo;
 + (NSArray*)getRecentPhotos;
++ (NSURL*)urlOfPhotoWithIndex:(int)index;
 
 @end

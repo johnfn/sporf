@@ -8,6 +8,7 @@
 
 #import "RecentViewController.h"
 #import "RecentPhotos.h"
+#import "ImageViewController.h"
 
 @interface RecentViewController ()
 
@@ -69,6 +70,15 @@
     cell.textLabel.text = [d objectForKey:@"tags"];
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    int index = [self.tableView indexPathForSelectedRow].row;
+    NSURL *url = [RecentPhotos urlOfPhotoWithIndex:index];
+    ImageViewController *newController = (ImageViewController*)segue.destinationViewController;
+    
+    newController.imageURL = url;
 }
 
 /*

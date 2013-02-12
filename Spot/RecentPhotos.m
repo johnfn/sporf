@@ -7,6 +7,7 @@
 //
 
 #import "RecentPhotos.h"
+#import "FlickrFetcher.h"
 
 @implementation RecentPhotos
 
@@ -24,8 +25,6 @@
     }
     [mutablePhotos addObject:photo];
     
-    NSLog(@"AAAdd pfoto");
-    
     [defaults setObject:mutablePhotos forKey:DEFAULTS_PHOTO_KEY];
 }
 
@@ -33,6 +32,11 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     return [defaults objectForKey:DEFAULTS_PHOTO_KEY];
+}
+
++ (NSURL*)urlOfPhotoWithIndex:(int)index {
+    NSDictionary *photoDict = [RecentPhotos getRecentPhotos][index];
+    return [FlickrFetcher urlForPhoto:photoDict format:FlickrPhotoFormatLarge];
 }
 
 @end
