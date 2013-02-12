@@ -20,6 +20,7 @@
 		8B7F223216C9E10F00D62D5B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F223016C9E10F00D62D5B /* MainStoryboard_iPad.storyboard */; };
 		8B7F223E16C9E12000D62D5B /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F223D16C9E12000D62D5B /* FlickrFetcher.m */; };
 		8B7F224116C9E90300D62D5B /* SpotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F224016C9E90300D62D5B /* SpotViewController.m */; };
+		8B7F224416CA051400D62D5B /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F224316CA051400D62D5B /* TagViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		8B7F223D16C9E12000D62D5B /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 		8B7F223F16C9E90300D62D5B /* SpotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotViewController.h; sourceTree = "<group>"; };
 		8B7F224016C9E90300D62D5B /* SpotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotViewController.m; sourceTree = "<group>"; };
+		8B7F224216CA051400D62D5B /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
+		8B7F224316CA051400D62D5B /* TagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,8 @@
 				8B7F222416C9E10F00D62D5B /* SpotAppDelegate.h */,
 				8B7F222516C9E10F00D62D5B /* SpotAppDelegate.m */,
 				8B7F222D16C9E10F00D62D5B /* MainStoryboard_iPhone.storyboard */,
+				8B7F224216CA051400D62D5B /* TagViewController.h */,
+				8B7F224316CA051400D62D5B /* TagViewController.m */,
 				8B7F223F16C9E90300D62D5B /* SpotViewController.h */,
 				8B7F224016C9E90300D62D5B /* SpotViewController.m */,
 				8B7F223016C9E10F00D62D5B /* MainStoryboard_iPad.storyboard */,
@@ -189,6 +194,7 @@
 				8B7F222616C9E10F00D62D5B /* SpotAppDelegate.m in Sources */,
 				8B7F223E16C9E12000D62D5B /* FlickrFetcher.m in Sources */,
 				8B7F224116C9E90300D62D5B /* SpotViewController.m in Sources */,
+				8B7F224416CA051400D62D5B /* TagViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

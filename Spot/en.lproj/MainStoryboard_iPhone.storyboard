@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
-        <!--Spot View Controller - Root View Controller-->
+        <!--Spot View Controller - Tags, lots of tags!-->
         <scene sceneID="ayR-TF-hnB">
             <objects>
                 <tableViewController id="vdU-eG-reK" customClass="SpotViewController" sceneMemberID="viewController">
@@ -13,7 +13,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="sLw-s1-dHk">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="sLw-s1-dHk">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="QH4-4x-MWn" kind="push" id="UQ1-pL-JUx"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tags, lots of tags!" id="g3N-AJ-gde"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MOZ-qf-FXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="771" y="-845"/>
+        </scene>
+        <!--Table View Controller - Herp Derper-->
+        <scene sceneID="z8x-Et-94f">
+            <objects>
+                <tableViewController id="QH4-4x-MWn" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8vz-mJ-v9b">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XSf-iX-Khe">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -23,12 +52,16 @@
                                 </view>
                             </tableViewCell>
                         </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="QH4-4x-MWn" id="cNi-DB-kbW"/>
+                            <outlet property="delegate" destination="QH4-4x-MWn" id="KAI-Tr-aDH"/>
+                        </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="g3N-AJ-gde"/>
+                    <navigationItem key="navigationItem" title="Herp Derper" id="nc2-j0-IwZ"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MOZ-qf-FXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RKb-OS-MbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="771" y="-845"/>
+            <point key="canvasLocation" x="1245" y="-841"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="ba7-d4-LNq">
