@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SpotViewController : UIViewController
+@interface SpotViewController : UITableViewController
 
 @end

@@ -18,7 +18,8 @@
 		8B7F222C16C9E10F00D62D5B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F222B16C9E10F00D62D5B /* Default-568h@2x.png */; };
 		8B7F222F16C9E10F00D62D5B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F222D16C9E10F00D62D5B /* MainStoryboard_iPhone.storyboard */; };
 		8B7F223216C9E10F00D62D5B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F223016C9E10F00D62D5B /* MainStoryboard_iPad.storyboard */; };
-		8B7F223516C9E10F00D62D5B /* SpotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F223416C9E10F00D62D5B /* SpotViewController.m */; };
+		8B7F223E16C9E12000D62D5B /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F223D16C9E12000D62D5B /* FlickrFetcher.m */; };
+		8B7F224116C9E90300D62D5B /* SpotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F224016C9E90300D62D5B /* SpotViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +38,11 @@
 		8B7F222B16C9E10F00D62D5B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8B7F222E16C9E10F00D62D5B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		8B7F223116C9E10F00D62D5B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		8B7F223316C9E10F00D62D5B /* SpotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotViewController.h; sourceTree = "<group>"; };
-		8B7F223416C9E10F00D62D5B /* SpotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotViewController.m; sourceTree = "<group>"; };
+		8B7F223B16C9E12000D62D5B /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
+		8B7F223C16C9E12000D62D5B /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
+		8B7F223D16C9E12000D62D5B /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
+		8B7F223F16C9E90300D62D5B /* SpotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotViewController.h; sourceTree = "<group>"; };
+		8B7F224016C9E90300D62D5B /* SpotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,12 +89,15 @@
 		8B7F221B16C9E10F00D62D5B /* Spot */ = {
 			isa = PBXGroup;
 			children = (
+				8B7F223B16C9E12000D62D5B /* FlickrAPIKey.h */,
+				8B7F223C16C9E12000D62D5B /* FlickrFetcher.h */,
+				8B7F223D16C9E12000D62D5B /* FlickrFetcher.m */,
 				8B7F222416C9E10F00D62D5B /* SpotAppDelegate.h */,
 				8B7F222516C9E10F00D62D5B /* SpotAppDelegate.m */,
 				8B7F222D16C9E10F00D62D5B /* MainStoryboard_iPhone.storyboard */,
+				8B7F223F16C9E90300D62D5B /* SpotViewController.h */,
+				8B7F224016C9E90300D62D5B /* SpotViewController.m */,
 				8B7F223016C9E10F00D62D5B /* MainStoryboard_iPad.storyboard */,
-				8B7F223316C9E10F00D62D5B /* SpotViewController.h */,
-				8B7F223416C9E10F00D62D5B /* SpotViewController.m */,
 				8B7F221C16C9E10F00D62D5B /* Supporting Files */,
 			);
 			path = Spot;
@@ -180,7 +187,8 @@
 			files = (
 				8B7F222216C9E10F00D62D5B /* main.m in Sources */,
 				8B7F222616C9E10F00D62D5B /* SpotAppDelegate.m in Sources */,
-				8B7F223516C9E10F00D62D5B /* SpotViewController.m in Sources */,
+				8B7F223E16C9E12000D62D5B /* FlickrFetcher.m in Sources */,
+				8B7F224116C9E90300D62D5B /* SpotViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
