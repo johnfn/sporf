@@ -11,4 +11,5 @@
 @interface TagList : NSObject
 - (NSArray*)uniqueTags;
 - (int)numPhotosWithTag:(NSString*)tag;
+- (NSArray*)photosWithTag:(NSString*)tag;
 @end

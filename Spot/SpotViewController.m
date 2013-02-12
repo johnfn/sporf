@@ -60,7 +60,6 @@
     TagViewController *newController = (TagViewController*)segue.destinationViewController;
     
     newController.tag = [self.tagList.uniqueTags objectAtIndex:index];
-    NSLog(@"%@", newController.tag);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

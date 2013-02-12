@@ -7,9 +7,12 @@
 //
 
 #import "TagViewController.h"
+#import "TagList.h"
+#import "TagDetail.h"
 
 @interface TagViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
+@property (strong, nonatomic) TagDetail *tagDetail;
 
 @end
 
@@ -27,6 +30,14 @@
 - (void)setTag:(NSString *)tag {
     self.navigationBar.title = tag;
     _tag = tag;
+}
+
+- (TagDetail*)tagDetail {
+    if (!_tagDetail) {
+        _tagDetail = [[TagDetail alloc] initWithTagName:self.tag];
+    }
+    
+    return _tagDetail;
 }
 
 - (void)viewDidLoad
@@ -57,15 +68,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    return self.tagDetail.photoNames.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"TagCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    int index = [indexPath row];
     
-    cell.textLabel.text = self.tag;
+    cell.textLabel.text = [self.tagDetail nameOfPhotoWithIndex:index];
     cell.detailTextLabel.text = @"Hello world!";
     
     return cell;
