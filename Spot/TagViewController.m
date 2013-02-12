@@ -9,6 +9,7 @@
 #import "TagViewController.h"
 
 @interface TagViewController ()
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 
 @end
 
@@ -21,6 +22,11 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)setTag:(NSString *)tag {
+    self.navigationBar.title = tag;
+    _tag = tag;
 }
 
 - (void)viewDidLoad
@@ -44,24 +50,22 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"TagCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = @"Herpaderp!";
+    cell.textLabel.text = self.tag;
     
     // Configure the cell...
     

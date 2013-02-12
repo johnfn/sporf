@@ -8,11 +8,12 @@
 
 #import "SpotViewController.h"
 #import "FlickrFetcher.h"
+#import "TagList.h"
+#import "TagViewController.h"
 
 @interface SpotViewController ()
-
-@property (readonly, nonatomic) NSArray *pictures;
-@property (readonly, nonatomic) NSArray *tags;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) TagList* tagList;
 @end
 
 @implementation SpotViewController
@@ -24,6 +25,14 @@
         // Custom initialization
     }
     return self;
+}
+
+- (TagList*)tagList {
+    if (!_tagList) {
+        _tagList = [[TagList alloc] init];
+    }
+    
+    return _tagList;
 }
 
 - (void)viewDidLoad
@@ -45,37 +54,13 @@
 
 #pragma mark - Table view data source
 
-@synthesize pictures = _pictures;
-
-- (NSArray*)pictures {
-    if (!_pictures) {
-        _pictures = [FlickrFetcher stanfordPhotos];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    int index = [self.tableView indexPathForSelectedRow].row;
+    TagViewController *newController = (TagViewController*)segue.destinationViewController;
     
-        NSLog(@"%@", _pictures);
-    }
-    
-    return _pictures;
-}
-
-- (NSArray*)allTags {
-    NSMutableSet *result = [[NSMutableSet alloc] init];
-    
-    for (NSDictionary *d in self.pictures) {
-        NSString* tagsForOneItem = [d objectForKey:@"tags"];
-        NSArray* split = [tagsForOneItem componentsSeparatedByString:@" "];
-        
-        for (NSString *s in split) {
-            NSLog(@"%@", s);
-            
-            if ([s isEqualToString:@"portrait"]  ||
-                [s isEqualToString:@"landscape"] ||
-                [s isEqualToString:@"cs193pspot"]) continue;
-            
-            [result addObject:[s capitalizedString]];
-        }
-    }
-    
-    return [result allObjects];
+    newController.tag = [self.tagList.uniqueTags objectAtIndex:index];
+    NSLog(@"%@", newController.tag);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -85,7 +70,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self allTags].count;
+    return self.tagList.uniqueTags.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -93,7 +78,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [[self allTags] objectAtIndex:[indexPath row]];
+    cell.textLabel.text = [self.tagList.uniqueTags objectAtIndex:[indexPath row]];
     
     return cell;
 }

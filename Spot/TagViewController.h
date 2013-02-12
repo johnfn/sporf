@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TagViewController : UITableViewController
+@property(strong, nonatomic) NSString* tag;
 
 @end

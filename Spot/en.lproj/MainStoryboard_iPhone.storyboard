@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
-        <!--Spot View Controller - Tags, lots of tags!-->
+        <!--Spot View Controller - Tags-->
         <scene sceneID="ayR-TF-hnB">
             <objects>
                 <tableViewController id="vdU-eG-reK" customClass="SpotViewController" sceneMemberID="viewController">
@@ -27,22 +27,25 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tags, lots of tags!" id="g3N-AJ-gde"/>
+                    <navigationItem key="navigationItem" title="Tags" id="g3N-AJ-gde"/>
+                    <connections>
+                        <outlet property="tableView" destination="7Jt-16-Wkz" id="Aa9-R7-C9Q"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOZ-qf-FXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="771" y="-845"/>
         </scene>
-        <!--Table View Controller - Herp Derper-->
+        <!--Tag View Controller - Herp Derper-->
         <scene sceneID="z8x-Et-94f">
             <objects>
-                <tableViewController id="QH4-4x-MWn" sceneMemberID="viewController">
+                <tableViewController id="QH4-4x-MWn" customClass="TagViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8vz-mJ-v9b">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XSf-iX-Khe">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TagCell" id="XSf-iX-Khe">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -58,6 +61,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Herp Derper" id="nc2-j0-IwZ"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="nc2-j0-IwZ" id="MH7-1c-xDV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKb-OS-MbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,6 +107,15 @@
     <classes>
         <class className="SpotViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="TagViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TagViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationItem"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
