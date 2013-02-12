@@ -72,9 +72,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     int index = [indexPath row];
     
-    NSDictionary *d = [[RecentPhotos getRecentPhotos] objectAtIndex:index];
-    
-    cell.textLabel.text = [d objectForKey:@"tags"];
+    cell.textLabel.text = [RecentPhotos titleOfPhotoWithIndex:index];
+    cell.detailTextLabel.text = [RecentPhotos descriptionOfPhotoWithIndex:index];
     
     return cell;
 }

@@ -12,6 +12,7 @@
 @implementation RecentPhotos
 
 #define DEFAULTS_PHOTO_KEY @"photos"
+#define MAX_NUM_RECENT_PHOTOS 5
 
 + (void)addPhoto:(NSDictionary *)photo {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -28,9 +29,26 @@
         return;
     }
     
+    while (mutablePhotos.count > MAX_NUM_RECENT_PHOTOS) {
+        [mutablePhotos removeObjectAtIndex:0];
+    }
+    
     [mutablePhotos addObject:photo];
     
     [defaults setObject:mutablePhotos forKey:DEFAULTS_PHOTO_KEY];
+}
+
++ (NSString*)titleOfPhotoWithIndex:(int)index {
+    NSDictionary *photoDict = [RecentPhotos getRecentPhotos][index];
+    
+    return [photoDict objectForKey:@"title"];
+}
+
++ (NSString*)descriptionOfPhotoWithIndex:(int)index {
+    NSDictionary *photoDict = [RecentPhotos getRecentPhotos][index];
+    NSDictionary *descDict = [photoDict objectForKey:@"description"];
+    
+    return [descDict objectForKey:@"_content"];
 }
 
 + (NSArray*)getRecentPhotos {
