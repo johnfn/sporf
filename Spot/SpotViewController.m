@@ -7,9 +7,12 @@
 //
 
 #import "SpotViewController.h"
+#import "FlickrFetcher.h"
 
 @interface SpotViewController ()
 
+@property (readonly, nonatomic) NSArray *pictures;
+@property (readonly, nonatomic) NSArray *tags;
 @end
 
 @implementation SpotViewController
@@ -42,6 +45,39 @@
 
 #pragma mark - Table view data source
 
+@synthesize pictures = _pictures;
+
+- (NSArray*)pictures {
+    if (!_pictures) {
+        _pictures = [FlickrFetcher stanfordPhotos];
+    
+        NSLog(@"%@", _pictures);
+    }
+    
+    return _pictures;
+}
+
+- (NSArray*)allTags {
+    NSMutableSet *result = [[NSMutableSet alloc] init];
+    
+    for (NSDictionary *d in self.pictures) {
+        NSString* tagsForOneItem = [d objectForKey:@"tags"];
+        NSArray* split = [tagsForOneItem componentsSeparatedByString:@" "];
+        
+        for (NSString *s in split) {
+            NSLog(@"%@", s);
+            
+            if ([s isEqualToString:@"portrait"]  ||
+                [s isEqualToString:@"landscape"] ||
+                [s isEqualToString:@"cs193pspot"]) continue;
+            
+            [result addObject:[s capitalizedString]];
+        }
+    }
+    
+    return [result allObjects];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -49,7 +85,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return [self allTags].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -57,7 +93,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = @"Hello Herp!";
+    cell.textLabel.text = [[self allTags] objectAtIndex:[indexPath row]];
     
     return cell;
 }
