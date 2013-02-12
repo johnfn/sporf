@@ -23,6 +23,7 @@
 		8B7F224416CA051400D62D5B /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F224316CA051400D62D5B /* TagViewController.m */; };
 		8B7F224B16CA112600D62D5B /* TagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F224A16CA112600D62D5B /* TagList.m */; };
 		8B7F224E16CA2A2800D62D5B /* TagDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F224D16CA2A2800D62D5B /* TagDetail.m */; };
+		8B7F225416CAD81200D62D5B /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F225316CAD81200D62D5B /* ImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,8 @@
 		8B7F224A16CA112600D62D5B /* TagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagList.m; sourceTree = "<group>"; };
 		8B7F224C16CA2A2800D62D5B /* TagDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagDetail.h; sourceTree = "<group>"; };
 		8B7F224D16CA2A2800D62D5B /* TagDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagDetail.m; sourceTree = "<group>"; };
+		8B7F225216CAD81200D62D5B /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		8B7F225316CAD81200D62D5B /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 		8B7F221B16C9E10F00D62D5B /* Spot */ = {
 			isa = PBXGroup;
 			children = (
+				8B7F225216CAD81200D62D5B /* ImageViewController.h */,
+				8B7F225316CAD81200D62D5B /* ImageViewController.m */,
 				8B7F224516CA073B00D62D5B /* Model */,
 				8B7F222416C9E10F00D62D5B /* SpotAppDelegate.h */,
 				8B7F222516C9E10F00D62D5B /* SpotAppDelegate.m */,
@@ -215,6 +220,7 @@
 				8B7F224416CA051400D62D5B /* TagViewController.m in Sources */,
 				8B7F224B16CA112600D62D5B /* TagList.m in Sources */,
 				8B7F224E16CA2A2800D62D5B /* TagDetail.m in Sources */,
+				8B7F225416CAD81200D62D5B /* ImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

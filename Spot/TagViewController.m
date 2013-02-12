@@ -9,6 +9,7 @@
 #import "TagViewController.h"
 #import "TagList.h"
 #import "TagDetail.h"
+#import "ImageViewController.h"
 
 @interface TagViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
@@ -44,12 +45,9 @@
 {
     int index = [self.tableView indexPathForSelectedRow].row;
     NSURL *url = [self.tagDetail urlOfPhotoWithIndex:index];
+    ImageViewController *newController = (ImageViewController*)segue.destinationViewController;
     
-    NSLog(@"%@", url);
-    
-    //TagViewController *newController = (TagViewController*)segue.destinationViewController;
-    
-    //newController.tag = [self.tagList.uniqueTags objectAtIndex:index];
+    newController.imageURL = url;
 }
 
 - (void)viewDidLoad

@@ -96,25 +96,28 @@
             </objects>
             <point key="canvasLocation" x="1245" y="-841"/>
         </scene>
-        <!--View Controller-->
+        <!--Image View Controller-->
         <scene sceneID="Ha5-ag-aKQ">
             <objects>
-                <viewController id="VJ0-YV-grZ" sceneMemberID="viewController">
+                <viewController id="VJ0-YV-grZ" customClass="ImageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2vz-cd-ztL">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umz-TR-DHZ"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r65-gl-4Jt"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="umz-TR-DHZ" firstAttribute="top" secondItem="2vz-cd-ztL" secondAttribute="top" type="default" id="Pne-BM-mvt"/>
-                            <constraint firstItem="umz-TR-DHZ" firstAttribute="leading" secondItem="2vz-cd-ztL" secondAttribute="leading" type="default" id="X2w-vo-ISO"/>
-                            <constraint firstItem="umz-TR-DHZ" firstAttribute="trailing" secondItem="2vz-cd-ztL" secondAttribute="trailing" type="default" id="guE-C5-JIc"/>
-                            <constraint firstItem="umz-TR-DHZ" firstAttribute="bottom" secondItem="2vz-cd-ztL" secondAttribute="bottom" type="default" id="zu0-dW-eOr"/>
+                            <constraint firstItem="r65-gl-4Jt" firstAttribute="top" secondItem="2vz-cd-ztL" secondAttribute="top" type="default" id="4NA-tU-sJd"/>
+                            <constraint firstItem="r65-gl-4Jt" firstAttribute="leading" secondItem="2vz-cd-ztL" secondAttribute="leading" type="default" id="OoS-U0-47r"/>
+                            <constraint firstItem="r65-gl-4Jt" firstAttribute="trailing" secondItem="2vz-cd-ztL" secondAttribute="trailing" type="default" id="VoV-h2-296"/>
+                            <constraint firstItem="r65-gl-4Jt" firstAttribute="bottom" secondItem="2vz-cd-ztL" secondAttribute="bottom" type="default" id="jfm-96-C1c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PpS-Fa-p7r"/>
+                    <connections>
+                        <outlet property="imageView" destination="r65-gl-4Jt" id="wLc-TA-hCc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gj0-Xm-4b6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -156,6 +159,13 @@
         </scene>
     </scenes>
     <classes>
+        <class className="ImageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
