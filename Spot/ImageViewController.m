@@ -37,12 +37,14 @@
 {
     [super viewDidLoad];
     
-    self.scrollView.minimumZoomScale = 1.0;
-    self.scrollView.maximumZoomScale = 5.0;
-    
     NSData *data = [NSData dataWithContentsOfURL:self.imageURL];
     UIImage *img = [[UIImage alloc] initWithData:data];
     [self.imageView setImage:img];
+    
+    self.scrollView.minimumZoomScale = 1.0;
+    self.scrollView.maximumZoomScale = 2.0;
+    
+    self.scrollView.contentSize = img.size;
 }
 
 - (void)didReceiveMemoryWarning

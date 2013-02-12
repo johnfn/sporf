@@ -1,24 +1,19 @@
 //
-//  TagViewController.m
+//  RecentViewController.m
 //  Spot
 //
-//  Created by Grant Mathews on 2/11/13.
+//  Created by Grant Mathews on 2/12/13.
 //  Copyright (c) 2013 johnfn. All rights reserved.
 //
 
-#import "TagViewController.h"
-#import "TagList.h"
-#import "TagDetail.h"
-#import "ImageViewController.h"
+#import "RecentViewController.h"
 #import "RecentPhotos.h"
 
-@interface TagViewController ()
-@property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
-@property (strong, nonatomic) TagDetail *tagDetail;
+@interface RecentViewController ()
 
 @end
 
-@implementation TagViewController
+@implementation RecentViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,30 +22,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (void)setTag:(NSString *)tag {
-    self.navigationBar.title = tag;
-    _tag = tag;
-}
-
-- (TagDetail*)tagDetail {
-    if (!_tagDetail) {
-        _tagDetail = [[TagDetail alloc] initWithTagName:self.tag];
-    }
-    
-    return _tagDetail;
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    int index = [self.tableView indexPathForSelectedRow].row;
-    NSURL *url = [self.tagDetail urlOfPhotoWithIndex:index];
-    ImageViewController *newController = (ImageViewController*)segue.destinationViewController;
-    
-    newController.imageURL = url;
-    
-    [RecentPhotos addPhoto:[self.tagDetail photoFromIndex:index]];
 }
 
 - (void)viewDidLoad
@@ -81,17 +52,18 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.tagDetail.photoNames.count;
+    return [RecentPhotos getRecentPhotos].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"TagCell";
+    static NSString *CellIdentifier = @"RecentCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     int index = [indexPath row];
     
-    cell.textLabel.text = [self.tagDetail nameOfPhotoWithIndex:index];
-    cell.detailTextLabel.text = [self.tagDetail descriptionOfPhotoWithIndex:index];
+    NSDictionary *d = [[RecentPhotos getRecentPhotos] objectAtIndex:index];
+    
+    cell.textLabel.text = [d objectForKey:@"tags"];
     
     return cell;
 }

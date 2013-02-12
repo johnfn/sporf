@@ -101,7 +101,7 @@
             <objects>
                 <viewController id="VJ0-YV-grZ" customClass="ImageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2vz-cd-ztL">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqA-3n-PhP">
@@ -139,11 +139,11 @@
             </objects>
             <point key="canvasLocation" x="1678" y="-844"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - All Pictures-->
         <scene sceneID="ba7-d4-LNq">
             <objects>
                 <navigationController definesPresentationContext="YES" id="sRd-bN-Vzs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="v8S-ZL-BvB"/>
+                    <tabBarItem key="tabBarItem" title="All Pictures" id="v8S-ZL-BvB"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bom-V7-wwi">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -154,6 +154,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m6n-8n-GGK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="238" y="-845"/>
+        </scene>
+        <!--Recent View Controller - Recents-->
+        <scene sceneID="Cce-OE-akS">
+            <objects>
+                <tableViewController id="RRf-kb-Uif" customClass="RecentViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wIY-sz-zee">
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecentCell" textLabel="D8W-U6-SPY" detailTextLabel="J1I-uI-pgY" style="IBUITableViewCellStyleSubtitle" id="grR-xD-CVw">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8W-U6-SPY">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1I-uI-pgY">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="VJ0-YV-grZ" kind="push" id="OR3-fe-zYv"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RRf-kb-Uif" id="wNH-Ck-vT4"/>
+                            <outlet property="delegate" destination="RRf-kb-Uif" id="E7u-jF-wk5"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Recents" id="fla-2h-Q8I"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EUH-iy-xwA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="238" y="-190"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="azw-ND-53s">
@@ -167,6 +212,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="sRd-bN-Vzs" kind="relationship" relationship="viewControllers" id="Z86-Zq-Kgx"/>
+                        <segue destination="RRf-kb-Uif" kind="relationship" relationship="viewControllers" id="kgu-xX-Imd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyQ-kY-8f8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -184,6 +230,9 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RecentViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecentViewController.h"/>
         </class>
         <class className="SpotViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SpotViewController.h"/>
@@ -203,4 +252,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="OR3-fe-zYv"/>
+    </inferredMetricsTieBreakers>
 </document>

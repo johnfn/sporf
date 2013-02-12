@@ -55,12 +55,14 @@
     return [FlickrFetcher urlForPhoto:photoInfo format:FlickrPhotoFormatLarge];
 }
 
+- (NSDictionary*)photoFromIndex:(int)index {
+    return [self.photos objectAtIndex:index];
+}
+
 - (NSArray*)photoNames {
     NSMutableArray *result = [[NSMutableArray alloc] init];
     for (NSDictionary *d in self.photos) {
         NSString* title = [d objectForKey:@"title"];
-        
-        NSLog(@": %@", title);
         
         [result addObject:title];
     }
