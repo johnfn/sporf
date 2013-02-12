@@ -23,6 +23,11 @@
     } else {
         mutablePhotos = [NSMutableArray arrayWithArray:photos];
     }
+    
+    if ([mutablePhotos containsObject:photo]) {
+        return;
+    }
+    
     [mutablePhotos addObject:photo];
     
     [defaults setObject:mutablePhotos forKey:DEFAULTS_PHOTO_KEY];

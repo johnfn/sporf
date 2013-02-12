@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface RecentViewController : UITableViewController
+- (void)reload;
 
 @end
