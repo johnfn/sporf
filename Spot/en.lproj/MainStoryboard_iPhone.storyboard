@@ -104,19 +104,35 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r65-gl-4Jt"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqA-3n-PhP">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTA-pn-0l2"/>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="mTA-pn-0l2" firstAttribute="centerX" secondItem="kqA-3n-PhP" secondAttribute="centerX" type="default" id="12u-EW-9bS"/>
+                                    <constraint firstItem="mTA-pn-0l2" firstAttribute="trailing" secondItem="kqA-3n-PhP" secondAttribute="trailing" type="default" id="GQ3-UU-4i2"/>
+                                    <constraint firstItem="mTA-pn-0l2" firstAttribute="leading" secondItem="kqA-3n-PhP" secondAttribute="leading" type="default" id="GsS-ZO-LNP"/>
+                                    <constraint firstItem="mTA-pn-0l2" firstAttribute="top" secondItem="kqA-3n-PhP" secondAttribute="top" type="default" id="PAz-PU-RjA"/>
+                                    <constraint firstItem="mTA-pn-0l2" firstAttribute="centerY" secondItem="kqA-3n-PhP" secondAttribute="centerY" type="default" id="VQR-6S-BEC"/>
+                                    <constraint firstItem="mTA-pn-0l2" firstAttribute="bottom" secondItem="kqA-3n-PhP" secondAttribute="bottom" type="default" id="lc8-z8-n5O"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="VJ0-YV-grZ" id="mEl-na-S8C"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="r65-gl-4Jt" firstAttribute="top" secondItem="2vz-cd-ztL" secondAttribute="top" type="default" id="4NA-tU-sJd"/>
-                            <constraint firstItem="r65-gl-4Jt" firstAttribute="leading" secondItem="2vz-cd-ztL" secondAttribute="leading" type="default" id="OoS-U0-47r"/>
-                            <constraint firstItem="r65-gl-4Jt" firstAttribute="trailing" secondItem="2vz-cd-ztL" secondAttribute="trailing" type="default" id="VoV-h2-296"/>
-                            <constraint firstItem="r65-gl-4Jt" firstAttribute="bottom" secondItem="2vz-cd-ztL" secondAttribute="bottom" type="default" id="jfm-96-C1c"/>
+                            <constraint firstItem="kqA-3n-PhP" firstAttribute="bottom" secondItem="2vz-cd-ztL" secondAttribute="bottom" type="default" id="EGq-6x-UZO"/>
+                            <constraint firstItem="kqA-3n-PhP" firstAttribute="trailing" secondItem="2vz-cd-ztL" secondAttribute="trailing" type="default" id="Fq0-Fl-f4b"/>
+                            <constraint firstItem="kqA-3n-PhP" firstAttribute="leading" secondItem="2vz-cd-ztL" secondAttribute="leading" type="default" id="aT7-6u-oeR"/>
+                            <constraint firstItem="kqA-3n-PhP" firstAttribute="top" secondItem="2vz-cd-ztL" secondAttribute="top" type="default" id="f51-oM-Q3A"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PpS-Fa-p7r"/>
                     <connections>
-                        <outlet property="imageView" destination="r65-gl-4Jt" id="wLc-TA-hCc"/>
+                        <outlet property="imageView" destination="mTA-pn-0l2" id="2F2-Ou-cdB"/>
+                        <outlet property="scrollView" destination="kqA-3n-PhP" id="gKG-h8-hLo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gj0-Xm-4b6" userLabel="First Responder" sceneMemberID="firstResponder"/>

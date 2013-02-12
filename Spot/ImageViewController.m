@@ -8,8 +8,9 @@
 
 #import "ImageViewController.h"
 
-@interface ImageViewController ()
+@interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -28,9 +29,16 @@
     return self;
 }
 
+- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.imageView;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.scrollView.minimumZoomScale = 1.0;
+    self.scrollView.maximumZoomScale = 5.0;
     
     NSData *data = [NSData dataWithContentsOfURL:self.imageURL];
     UIImage *img = [[UIImage alloc] initWithData:data];
