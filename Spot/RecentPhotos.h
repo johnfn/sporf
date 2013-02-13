@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Photo.h"
 
 @interface RecentPhotos : NSObject
 
 + (void)addPhoto:(NSDictionary*)photo;
 + (NSArray*)getRecentPhotos;
-+ (NSURL*)urlOfPhotoWithIndex:(int)index;
-+ (NSString*)titleOfPhotoWithIndex:(int)index;
-+ (NSString*)descriptionOfPhotoWithIndex:(int)index;
+
++ (Photo*)photoAtIndex:(int)index;
 
 @end

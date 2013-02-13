@@ -72,8 +72,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     int index = [indexPath row];
     
-    cell.textLabel.text = [RecentPhotos titleOfPhotoWithIndex:index];
-    cell.detailTextLabel.text = [RecentPhotos descriptionOfPhotoWithIndex:index];
+    cell.textLabel.text = [RecentPhotos photoAtIndex:index].title;
+    cell.detailTextLabel.text = [RecentPhotos photoAtIndex:index].detail;
     
     return cell;
 }
@@ -81,7 +81,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     int index = [self.tableView indexPathForSelectedRow].row;
-    NSURL *url = [RecentPhotos urlOfPhotoWithIndex:index];
+    NSURL *url = [RecentPhotos photoAtIndex:index].url;
     ImageViewController *newController = (ImageViewController*)segue.destinationViewController;
     
     newController.imageURL = url;

@@ -7,6 +7,7 @@
 //
 
 #import "Photo.h"
+#import "FlickrFetcher.h"
 
 @interface Photo()
 @property (nonatomic, strong) NSDictionary* dict;
@@ -14,16 +15,28 @@
 
 @implementation Photo
 
+- (Photo*)initWithDictionary:(NSDictionary *)dict {
+    self = [super init];
+    
+    if (self) {
+        self.dict = dict;
+    }
+    
+    return self;
+}
+
 - (NSURL*)url {
-    return nil;
+    return [FlickrFetcher urlForPhoto:self.dict format:FlickrPhotoFormatLarge];
 }
 
 - (NSString*)detail {
-    return nil;
+    NSDictionary *descDict = [self.dict objectForKey:@"description"];
+    
+    return [descDict objectForKey:@"_content"];
 }
 
 - (NSString*)title {
-    return nil;
+    return [self.dict objectForKey:@"title"];
 }
 
 @end

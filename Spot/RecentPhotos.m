@@ -8,6 +8,7 @@
 
 #import "RecentPhotos.h"
 #import "FlickrFetcher.h"
+#import "Photo.h"
 
 @implementation RecentPhotos
 
@@ -38,28 +39,14 @@
     [defaults setObject:mutablePhotos forKey:DEFAULTS_PHOTO_KEY];
 }
 
-+ (NSString*)titleOfPhotoWithIndex:(int)index {
-    NSDictionary *photoDict = [RecentPhotos getRecentPhotos][index];
-    
-    return [photoDict objectForKey:@"title"];
-}
-
-+ (NSString*)descriptionOfPhotoWithIndex:(int)index {
-    NSDictionary *photoDict = [RecentPhotos getRecentPhotos][index];
-    NSDictionary *descDict = [photoDict objectForKey:@"description"];
-    
-    return [descDict objectForKey:@"_content"];
-}
-
 + (NSArray*)getRecentPhotos {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     return [defaults objectForKey:DEFAULTS_PHOTO_KEY];
 }
 
-+ (NSURL*)urlOfPhotoWithIndex:(int)index {
-    NSDictionary *photoDict = [RecentPhotos getRecentPhotos][index];
-    return [FlickrFetcher urlForPhoto:photoDict format:FlickrPhotoFormatLarge];
++ (Photo*)photoAtIndex:(int)index {
+    return [[Photo alloc] initWithDictionary:[RecentPhotos getRecentPhotos][index]];
 }
 
 @end
