@@ -37,26 +37,8 @@
     return self;
 }
 
-- (NSString*)nameOfPhotoWithIndex:(int)index {
-    return [self.photoNames objectAtIndex:index];
-}
-
-- (NSString*)descriptionOfPhotoWithIndex:(int)index {
-    NSDictionary *photoInfo = [self.photos objectAtIndex:index];
-    NSDictionary *descInfo  = [photoInfo objectForKey:@"description"];
-    NSString *description = [descInfo objectForKey:@"_content"];
-    
-    return description;
-}
-
-- (NSURL*)urlOfPhotoWithIndex:(int)index {
-    NSDictionary *photoInfo = [self.photos objectAtIndex:index];
-    
-    return [FlickrFetcher urlForPhoto:photoInfo format:FlickrPhotoFormatLarge];
-}
-
-- (NSDictionary*)photoFromIndex:(int)index {
-    return [self.photos objectAtIndex:index];
+- (Photo*)photoAtIndex:(int)index {
+    return [[Photo alloc] initWithDictionary: [self.photos objectAtIndex:index]];
 }
 
 - (NSArray*)photoNames {

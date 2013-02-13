@@ -7,12 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Photo.h"
 
 @interface TagDetail : NSObject
 - (id)initWithTagName:(NSString*)tag; //designated initializer
 - (NSArray*)photoNames;
-- (NSString*)nameOfPhotoWithIndex:(int)index;
-- (NSString*)descriptionOfPhotoWithIndex:(int)index;
-- (NSURL*)urlOfPhotoWithIndex:(int)index;
-- (NSDictionary*)photoFromIndex:(int)index;
+- (Photo*)photoAtIndex:(int)index;
 @end

@@ -15,5 +15,6 @@
 - (NSURL*)url;
 - (NSString*)detail;
 - (NSString*)title;
+- (NSDictionary*)data;
 
 @end

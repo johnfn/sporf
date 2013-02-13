@@ -25,6 +25,10 @@
     return self;
 }
 
+- (NSDictionary*)data {
+    return self.dict;
+}
+
 - (NSURL*)url {
     return [FlickrFetcher urlForPhoto:self.dict format:FlickrPhotoFormatLarge];
 }

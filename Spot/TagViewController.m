@@ -45,12 +45,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     int index = [self.tableView indexPathForSelectedRow].row;
-    NSURL *url = [self.tagDetail urlOfPhotoWithIndex:index];
+    NSURL *url = [self.tagDetail photoAtIndex:index].url;
     ImageViewController *newController = (ImageViewController*)segue.destinationViewController;
     
     newController.imageURL = url;
     
-    [RecentPhotos addPhoto:[self.tagDetail photoFromIndex:index]];
+    [RecentPhotos addPhoto:[self.tagDetail photoAtIndex:index].data];
 }
 
 - (void)viewDidLoad
@@ -90,8 +90,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     int index = [indexPath row];
     
-    cell.textLabel.text = [self.tagDetail nameOfPhotoWithIndex:index];
-    cell.detailTextLabel.text = [self.tagDetail descriptionOfPhotoWithIndex:index];
+    cell.textLabel.text = [self.tagDetail photoAtIndex:index].title;
+    cell.detailTextLabel.text = [self.tagDetail photoAtIndex:index].detail;
     
     return cell;
 }
