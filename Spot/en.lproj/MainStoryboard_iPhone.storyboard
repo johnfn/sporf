@@ -155,11 +155,11 @@
             </objects>
             <point key="canvasLocation" x="238" y="-845"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Recents-->
         <scene sceneID="vYm-rJ-Gun">
             <objects>
                 <navigationController definesPresentationContext="YES" id="77b-cn-Wsm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Ssx-iC-Hy5"/>
+                    <tabBarItem key="tabBarItem" title="Recents" id="Ssx-iC-Hy5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NQk-81-vDx">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

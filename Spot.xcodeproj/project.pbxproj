@@ -26,6 +26,7 @@
 		8B7F225416CAD81200D62D5B /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F225316CAD81200D62D5B /* ImageViewController.m */; };
 		8B7F225A16CAFF7700D62D5B /* RecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F225916CAFF7700D62D5B /* RecentViewController.m */; };
 		8B7F225D16CB02DA00D62D5B /* RecentPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F225C16CB02DA00D62D5B /* RecentPhotos.m */; };
+		8B7F226016CB0F5A00D62D5B /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F225F16CB0F5A00D62D5B /* Photo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,8 @@
 		8B7F225916CAFF7700D62D5B /* RecentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecentViewController.m; path = ../RecentViewController.m; sourceTree = "<group>"; };
 		8B7F225B16CB02DA00D62D5B /* RecentPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentPhotos.h; sourceTree = "<group>"; };
 		8B7F225C16CB02DA00D62D5B /* RecentPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPhotos.m; sourceTree = "<group>"; };
+		8B7F225E16CB0F5A00D62D5B /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		8B7F225F16CB0F5A00D62D5B /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				8B7F224916CA112600D62D5B /* TagList.h */,
+				8B7F225E16CB0F5A00D62D5B /* Photo.h */,
+				8B7F225F16CB0F5A00D62D5B /* Photo.m */,
 				8B7F224A16CA112600D62D5B /* TagList.m */,
 				8B7F223B16C9E12000D62D5B /* FlickrAPIKey.h */,
 				8B7F223C16C9E12000D62D5B /* FlickrFetcher.h */,
@@ -233,6 +238,7 @@
 				8B7F225416CAD81200D62D5B /* ImageViewController.m in Sources */,
 				8B7F225A16CAFF7700D62D5B /* RecentViewController.m in Sources */,
 				8B7F225D16CB02DA00D62D5B /* RecentPhotos.m in Sources */,
+				8B7F226016CB0F5A00D62D5B /* Photo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
