@@ -15,6 +15,7 @@
 @interface TagViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (strong, nonatomic) TagDetail *tagDetail;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -34,12 +35,20 @@
     _tag = tag;
 }
 
+- (void)finishedLoading {
+    [[self activityIndicator] stopAnimating];
+    [[self tableView] reloadData];
+}
+
 - (void)loadTagDetail {
+    [[self activityIndicator] startAnimating];
+    
     dispatch_queue_t downloadQueue = dispatch_queue_create("load tagdetail", NULL);
     dispatch_async(downloadQueue, ^{
         _tagDetail = [[TagDetail alloc] initWithTagName:self.tag];
-        NSLog(@"Loaded.");
-        [[self tableView] reloadData];
+        [self performSelectorOnMainThread:@selector(finishedLoading)
+                               withObject:nil
+                            waitUntilDone:YES];
     });
 }
 
@@ -57,8 +66,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.activityIndicator.hidesWhenStopped = true;
     [self loadTagDetail];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -86,7 +96,6 @@
     if (!_tagDetail) {
         return 0;
     } else {
-        NSLog(@"%d!", self.tagDetail.photoNames.count);
         return self.tagDetail.photoNames.count;
     }
 }

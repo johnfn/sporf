@@ -56,6 +56,10 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" style="gray" id="JGW-kS-eqX">
+                            <rect key="frame" x="0.0" y="66" width="320" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TagCell" textLabel="IME-Uz-0UW" detailTextLabel="Vyj-yx-bzS" style="IBUITableViewCellStyleSubtitle" id="XSf-iX-Khe">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -89,6 +93,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="[will be filled out]" id="nc2-j0-IwZ"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="JGW-kS-eqX" id="auz-Tm-5qX"/>
                         <outlet property="navigationBar" destination="nc2-j0-IwZ" id="MH7-1c-xDV"/>
                     </connections>
                 </tableViewController>
@@ -221,7 +226,7 @@
         <scene sceneID="azw-ND-53s">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="vJ4-qb-1mi" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="CCx-tU-83y">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -260,6 +265,7 @@
         <class className="TagViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TagViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationItem"/>
             </relationships>
         </class>
@@ -270,6 +276,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="OR3-fe-zYv"/>
+        <segue reference="h3i-fW-v0k"/>
     </inferredMetricsTieBreakers>
 </document>
