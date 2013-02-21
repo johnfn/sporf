@@ -55,7 +55,8 @@
             }
         }
         
-        _uniqueTags = [result allObjects];
+        // Put the tags in order
+        _uniqueTags = [[result allObjects] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     }
     
     return _uniqueTags;
@@ -74,7 +75,14 @@
         }
     }
     
-    return result;
+    return [result sortedArrayUsingComparator:^(id a, id b) {
+        NSDictionary *dictA = (NSDictionary*)a;
+        NSDictionary *dictB = (NSDictionary*)b;
+        NSString *titleA = (NSString *)[dictA objectForKey:@"title"];
+        NSString *titleB = (NSString *)[dictB objectForKey:@"title"];
+        
+        return [titleA compare:titleB];
+    }];
 }
 
 - (int)numPhotosWithTag:(NSString *)tag {

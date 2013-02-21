@@ -31,7 +31,6 @@
     
     if (self) {
         self.photos = [self.tagList photosWithTag:tag];
-        NSLog(@"%d", self.photos.count);
     }
 
     return self;
