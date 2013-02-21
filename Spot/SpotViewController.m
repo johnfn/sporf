@@ -7,7 +7,6 @@
 //
 
 #import "SpotViewController.h"
-#import "FlickrFetcher.h"
 #import "TagList.h"
 #import "TagViewController.h"
 
@@ -30,6 +29,10 @@
 - (TagList*)tagList {
     if (!_tagList) {
         _tagList = [[TagList alloc] init];
+        dispatch_queue_t downloadQueue = dispatch_queue_create("load taglist", NULL);
+        dispatch_async(downloadQueue, ^{
+            [_tagList load];
+        });
     }
     
     return _tagList;

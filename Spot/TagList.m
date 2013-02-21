@@ -89,10 +89,14 @@
 
 - (NSArray*)pictures {
     if (!_pictures) {
-        _pictures = [FlickrFetcher stanfordPhotos];
+        [self load];
     }
     
     return _pictures;
+}
+
+- (void)load {
+    _pictures = [FlickrFetcher stanfordPhotos];
 }
 
 @end

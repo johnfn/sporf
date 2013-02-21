@@ -37,14 +37,16 @@
 {
     [super viewDidLoad];
     
-    NSData *data = [NSData dataWithContentsOfURL:self.imageURL];
-    UIImage *img = [[UIImage alloc] initWithData:data];
-    [self.imageView setImage:img];
-    
     self.scrollView.minimumZoomScale = 1.0;
     self.scrollView.maximumZoomScale = 2.0;
     
-    self.scrollView.contentSize = img.size;
+    dispatch_queue_t downloadQueue = dispatch_queue_create("image downloader", NULL);
+    dispatch_async(downloadQueue, ^{
+        NSData *data = [NSData dataWithContentsOfURL:self.imageURL];
+        UIImage *img = [[UIImage alloc] initWithData:data];
+        [self.imageView setImage:img];
+        self.scrollView.contentSize = img.size;
+    });
 }
 
 - (void)didReceiveMemoryWarning

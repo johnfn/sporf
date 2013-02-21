@@ -34,12 +34,13 @@
     _tag = tag;
 }
 
-- (TagDetail*)tagDetail {
-    if (!_tagDetail) {
+- (void)loadTagDetail {
+    dispatch_queue_t downloadQueue = dispatch_queue_create("load tagdetail", NULL);
+    dispatch_async(downloadQueue, ^{
         _tagDetail = [[TagDetail alloc] initWithTagName:self.tag];
-    }
-    
-    return _tagDetail;
+        NSLog(@"Loaded.");
+        [[self tableView] reloadData];
+    });
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -56,6 +57,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadTagDetail];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -81,7 +83,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.tagDetail.photoNames.count;
+    if (!_tagDetail) {
+        return 0;
+    } else {
+        NSLog(@"%d!", self.tagDetail.photoNames.count);
+        return self.tagDetail.photoNames.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
