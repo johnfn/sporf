@@ -34,13 +34,47 @@
     return self.imageView;
 }
 
-- (NSURL*)cachePath {
+- (NSURL*)rootCachePath {
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     NSArray *paths = [fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask];
-    NSURL *cachePath = [paths objectAtIndex:0];
+    return [paths objectAtIndex:0];
+}
+
+#define CACHE_SIZE 5
+
+- (void)checkForCacheEviction {
+    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[self rootCachePath] includingPropertiesForKeys:@[NSFileModificationDate] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
+    
+    NSURL *oldestFile = nil;
+    NSDate *oldestDate = nil;
+    
+    if (directoryContent.count < CACHE_SIZE) return;
+    
+    for (NSURL *filePath in directoryContent) {
+        // skip directories.
+        if ([filePath.absoluteString hasSuffix:@"/"]) {
+            continue;
+        }
+        
+        NSDate *fileDate = nil;
+        [filePath getResourceValue:&fileDate forKey:NSURLContentModificationDateKey error:NULL];
+        
+        if (oldestDate == nil || [oldestDate compare:fileDate] == NSOrderedDescending) {
+            oldestDate = fileDate;
+            oldestFile = filePath;
+        }
+    }
+    
+    [[NSFileManager defaultManager] removeItemAtURL:oldestFile error:nil];
+}
+
+- (NSURL*)cachePath {
+    NSURL *cachePath = [self rootCachePath];
     
     cachePath = [cachePath URLByAppendingPathComponent:self.imageTitle];
     cachePath = [cachePath URLByAppendingPathExtension:@"png"];
+    
+    [self checkForCacheEviction];
     
     return cachePath;
 }
@@ -66,7 +100,7 @@
     [[self activityIndicator] startAnimating];
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    dispatch_queue_t downloadQueue = dispatch_queue_create("image downloader", NULL);
+    dispatch_queue_t downloadQueue = dispatch_queue_create("image fetcher", NULL);
     dispatch_async(downloadQueue, ^{
         NSData *data;
         UIImage *img;
@@ -78,6 +112,8 @@
         } else {
             data = [NSData dataWithContentsOfURL:[self cachePath]];
         }
+        
+        //[[self cachePath] get]
         
         img = [[UIImage alloc] initWithData:data];
         
