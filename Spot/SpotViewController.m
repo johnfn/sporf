@@ -13,6 +13,7 @@
 @interface SpotViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) TagList* tagList;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation SpotViewController
@@ -26,13 +27,26 @@
     return self;
 }
 
+- (void)finishLoading {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [self.refreshControl endRefreshing];
+}
+
+- (void)loadTagList {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    _tagList = [[TagList alloc] init];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("load taglist", NULL);
+    dispatch_async(downloadQueue, ^{
+        [_tagList load];
+        [self performSelectorOnMainThread:@selector(finishLoading)
+                               withObject:nil
+                            waitUntilDone:YES];
+    });
+}
+
 - (TagList*)tagList {
     if (!_tagList) {
-        _tagList = [[TagList alloc] init];
-        dispatch_queue_t downloadQueue = dispatch_queue_create("load taglist", NULL);
-        dispatch_async(downloadQueue, ^{
-            [_tagList load];
-        });
+        [self loadTagList];
     }
     
     return _tagList;
@@ -41,12 +55,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(loadTagList) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
 }
 
 - (void)didReceiveMemoryWarning
