@@ -34,6 +34,17 @@
     return self.imageView;
 }
 
+- (NSURL*)cachePath {
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    NSArray *paths = [fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask];
+    NSURL *cachePath = [paths objectAtIndex:0];
+    
+    cachePath = [cachePath URLByAppendingPathComponent:self.imageTitle];
+    cachePath = [cachePath URLByAppendingPathExtension:@"png"];
+    
+    return cachePath;
+}
+
 - (void)finishedLoading:(UIImage*)img {
     [self.activityIndicator stopAnimating];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -42,18 +53,7 @@
     
     // Save image to cache.
     
-    NSFileManager *fileManager = [[NSFileManager alloc] init];
-    
-    NSArray *paths = [fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask];
-    NSURL *cachePath = [paths objectAtIndex:0];
-    
-    cachePath = [cachePath URLByAppendingPathComponent:self.imageTitle];
-    cachePath = [cachePath URLByAppendingPathExtension:@"png"];
-    
-    [UIImagePNGRepresentation(img) writeToURL:cachePath atomically:YES];
-    
-    NSLog(@"%@", cachePath);
-    
+    [UIImagePNGRepresentation(img) writeToURL:[self cachePath] atomically:YES];
 }
 
 - (void)viewDidLoad
@@ -68,9 +68,19 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     dispatch_queue_t downloadQueue = dispatch_queue_create("image downloader", NULL);
     dispatch_async(downloadQueue, ^{
-        NSData *data = [NSData dataWithContentsOfURL:self.imageURL];
-        UIImage *img = [[UIImage alloc] initWithData:data];
-
+        NSData *data;
+        UIImage *img;
+        NSError *err;
+        // The idea to check for file existence in this way thanks to StackOverflow:
+        // http://stackoverflow.com/questions/1927754/testing-file-existence-using-nsurl
+        if ([[self cachePath] checkResourceIsReachableAndReturnError:&err] == NO) {
+            data = [NSData dataWithContentsOfURL:self.imageURL];
+        } else {
+            data = [NSData dataWithContentsOfURL:[self cachePath]];
+        }
+        
+        img = [[UIImage alloc] initWithData:data];
+        
         [self performSelectorOnMainThread:@selector(finishedLoading:)
                                withObject:img
                             waitUntilDone:YES];
