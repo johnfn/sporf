@@ -34,9 +34,11 @@
     return self.imageView;
 }
 
-- (void)finishedLoading {
+- (void)finishedLoading:(UIImage*)img {
     [self.activityIndicator stopAnimating];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [self.imageView setImage:img];
+    self.scrollView.contentSize = img.size;
 }
 
 - (void)viewDidLoad
@@ -53,11 +55,9 @@
     dispatch_async(downloadQueue, ^{
         NSData *data = [NSData dataWithContentsOfURL:self.imageURL];
         UIImage *img = [[UIImage alloc] initWithData:data];
-        [self.imageView setImage:img];
-        self.scrollView.contentSize = img.size;
 
-        [self performSelectorOnMainThread:@selector(finishedLoading)
-                               withObject:nil
+        [self performSelectorOnMainThread:@selector(finishedLoading:)
+                               withObject:img
                             waitUntilDone:YES];
     });
 }
