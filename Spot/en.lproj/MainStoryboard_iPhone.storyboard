@@ -115,14 +115,14 @@
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CKx-Tt-kVG"/>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="CKx-Tt-kVG" firstAttribute="top" secondItem="kqA-3n-PhP" secondAttribute="top" constant="187" id="8Ln-gc-Boe"/>
-                                    <constraint firstItem="mTA-pn-0l2" firstAttribute="trailing" secondItem="kqA-3n-PhP" secondAttribute="trailing" type="default" id="GQ3-UU-4i2"/>
+                                    <constraint firstAttribute="trailing" secondItem="mTA-pn-0l2" secondAttribute="trailing" constant="-1" id="3RI-ud-W8n"/>
+                                    <constraint firstItem="CKx-Tt-kVG" firstAttribute="centerY" secondItem="kqA-3n-PhP" secondAttribute="centerY" type="default" id="7En-Ez-z3k"/>
+                                    <constraint firstItem="mTA-pn-0l2" firstAttribute="centerX" secondItem="CKx-Tt-kVG" secondAttribute="centerX" type="default" id="EHM-rl-Thj"/>
                                     <constraint firstItem="mTA-pn-0l2" firstAttribute="leading" secondItem="kqA-3n-PhP" secondAttribute="leading" type="default" id="GsS-ZO-LNP"/>
-                                    <constraint firstItem="CKx-Tt-kVG" firstAttribute="centerX" secondItem="mTA-pn-0l2" secondAttribute="centerX" type="default" id="LI4-lb-Sj6"/>
+                                    <constraint firstItem="mTA-pn-0l2" firstAttribute="centerY" secondItem="CKx-Tt-kVG" secondAttribute="centerY" type="default" id="Lt9-Eu-Cc6"/>
                                     <constraint firstItem="mTA-pn-0l2" firstAttribute="top" secondItem="kqA-3n-PhP" secondAttribute="top" type="default" id="PAz-PU-RjA"/>
-                                    <constraint firstItem="mTA-pn-0l2" firstAttribute="centerY" secondItem="kqA-3n-PhP" secondAttribute="centerY" type="default" id="VQR-6S-BEC"/>
+                                    <constraint firstItem="mTA-pn-0l2" firstAttribute="centerX" secondItem="kqA-3n-PhP" secondAttribute="centerX" type="default" id="a5d-im-D4M"/>
                                     <constraint firstItem="mTA-pn-0l2" firstAttribute="bottom" secondItem="kqA-3n-PhP" secondAttribute="bottom" type="default" id="lc8-z8-n5O"/>
-                                    <constraint firstItem="CKx-Tt-kVG" firstAttribute="centerX" secondItem="kqA-3n-PhP" secondAttribute="centerX" type="default" id="qPx-8u-Cta"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="VJ0-YV-grZ" id="mEl-na-S8C"/>

@@ -133,6 +133,8 @@
                                withObject:img
                             waitUntilDone:YES];
     });
+    
+    [self.imageView bringSubviewToFront:self.activityIndicator];
 }
 
 - (void)didReceiveMemoryWarning
