@@ -82,9 +82,12 @@
 {
     int index = [self.tableView indexPathForSelectedRow].row;
     NSURL *url = [RecentPhotos photoAtIndex:index].url;
+    NSString *name = [RecentPhotos photoAtIndex:index].title;
+    
     ImageViewController *newController = (ImageViewController*)segue.destinationViewController;
     
     newController.imageURL = url;
+    newController.imageTitle = name;
 }
 
 /*

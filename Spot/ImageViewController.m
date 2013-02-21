@@ -42,13 +42,12 @@
     
     // Save image to cache.
     
-    
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     
     NSArray *paths = [fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask];
     NSURL *cachePath = [paths objectAtIndex:0];
     
-    cachePath = [cachePath URLByAppendingPathComponent:@"cached-image"];
+    cachePath = [cachePath URLByAppendingPathComponent:self.imageTitle];
     cachePath = [cachePath URLByAppendingPathExtension:@"png"];
     
     [UIImagePNGRepresentation(img) writeToURL:cachePath atomically:YES];
