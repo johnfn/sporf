@@ -11,6 +11,7 @@
 @interface ImageViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -33,6 +34,11 @@
     return self.imageView;
 }
 
+- (void)finishedLoading {
+    [self.activityIndicator stopAnimating];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -40,12 +46,19 @@
     self.scrollView.minimumZoomScale = 1.0;
     self.scrollView.maximumZoomScale = 2.0;
     
+    [[self activityIndicator] startAnimating];
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     dispatch_queue_t downloadQueue = dispatch_queue_create("image downloader", NULL);
     dispatch_async(downloadQueue, ^{
         NSData *data = [NSData dataWithContentsOfURL:self.imageURL];
         UIImage *img = [[UIImage alloc] initWithData:data];
         [self.imageView setImage:img];
         self.scrollView.contentSize = img.size;
+
+        [self performSelectorOnMainThread:@selector(finishedLoading)
+                               withObject:nil
+                            waitUntilDone:YES];
     });
 }
 

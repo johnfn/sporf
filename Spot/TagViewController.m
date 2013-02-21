@@ -38,14 +38,18 @@
 - (void)finishedLoading {
     [[self activityIndicator] stopAnimating];
     [[self tableView] reloadData];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 - (void)loadTagDetail {
     [[self activityIndicator] startAnimating];
     
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     dispatch_queue_t downloadQueue = dispatch_queue_create("load tagdetail", NULL);
     dispatch_async(downloadQueue, ^{
         _tagDetail = [[TagDetail alloc] initWithTagName:self.tag];
+        // Usage of performSelectorOnMainThread was inspired by this StackOverflow page:
+        // http://stackoverflow.com/questions/7126060/iphone-activity-indicator-being-delayed
         [self performSelectorOnMainThread:@selector(finishedLoading)
                                withObject:nil
                             waitUntilDone:YES];
