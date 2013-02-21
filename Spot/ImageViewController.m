@@ -47,8 +47,17 @@
     
     NSURL *oldestFile = nil;
     NSDate *oldestDate = nil;
+    int numFilesCached = 0;
     
-    if (directoryContent.count < CACHE_SIZE) return;
+    for (NSURL *filePath in directoryContent) {
+        if ([filePath.absoluteString hasSuffix:@"/"]) {
+            continue;
+        }
+        
+        ++numFilesCached;
+    }
+    
+    if (numFilesCached <= CACHE_SIZE) return;
     
     for (NSURL *filePath in directoryContent) {
         // skip directories.
@@ -64,6 +73,8 @@
             oldestFile = filePath;
         }
     }
+    
+    NSLog(@"%@", oldestFile);
     
     [[NSFileManager defaultManager] removeItemAtURL:oldestFile error:nil];
 }
@@ -98,6 +109,7 @@
     self.scrollView.maximumZoomScale = 2.0;
     
     [[self activityIndicator] startAnimating];
+    [self activityIndicator].hidesWhenStopped = true;
     
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     dispatch_queue_t downloadQueue = dispatch_queue_create("image fetcher", NULL);
